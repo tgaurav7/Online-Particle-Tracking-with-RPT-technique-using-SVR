@@ -1,0 +1,10 @@
+% Synthetic Data  
+xy = [arx(2:length(arx)) ary(2:length(ary))]
+velocity = arvmag;
+% Interpolate to grid
+interpolant = scatteredInterpolant(xy(:,1),xy(:,2),velocity);
+% Grid
+[xx,yy] = meshgrid(linspace(-60,,60));  % replace, 0 1, 10 with range of your values
+% Interpolate
+intensity_interp = interpolant(xx,yy);
+contourf(xx,yy,intensity_interp)
